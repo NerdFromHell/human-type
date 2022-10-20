@@ -1,0 +1,38 @@
+.caret {
+  caret-color: blue;
+}
+.text__area{
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: flex-start;
+  color:gray;
+  outline: none;
+  font-size: 1.5rem;
+  height: 156.8px;
+  // overflow: hidden;
+  width: 100%;
+  margin-left: unset;
+  transition: all 0.25s ease 0s;
+}
+
+.highlight{
+  color:yellow !important;
+  background-color: #2c2e31;
+}
+
+button{
+  border: none;
+  display: block;
+  background-color: #2c2e31;
+  color: lightgrey;
+  font-size: 0.8rem;
+}
+button:hover{
+  cursor: pointer;
+}
+
+.sample__body{
+  background-color: #2c2e31;
+  color: lightgrey;
+}

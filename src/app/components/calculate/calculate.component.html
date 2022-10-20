@@ -1,0 +1,25 @@
+
+<h1 fxLayoutAlign="center center" style="font-weight: 500; color: gainsboro;">
+    STATS:
+</h1>
+<div fxLayout="column" fxLayoutAlign="start stretch">
+    <div fxFlex fxLayoutAlign="start center" class="chart-container" >
+        <canvas  id="WPM_Chart" >{{ chart }}</canvas>
+    </div>
+    <div fxLayout="row" fxFlex="100" fxLayoutAlign="start center">
+        <div fxFlex="50" fxLayout="column" fxLayoutAlign="start center">
+            <p>wpm</p>
+            <p>{{(WPM_Sample[WPM_Sample.length - 1]) | number : '1.0-0' }}</p>
+        </div>
+        <div fxFlex="50" fxLayout="column" fxLayoutAlign="start center">
+            <p>characters</p>
+            <p>{{correctLetters}}/{{incorrectLetters}}/{{extraLetters}}</p>
+        </div>
+    </div>
+    
+    <div>
+        <button (click)="newTypingTest()">
+            restart
+        </button>
+    </div>
+</div>

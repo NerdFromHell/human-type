@@ -1,0 +1,98 @@
+<div fxFlex="70">
+  <h1 style="display: flex; justify-content: center; color:aliceblue; font-weight: 400;">
+    HUMAN TYPE!
+</h1>
+
+  &nbsp;
+  <div fxLayout="row">
+    <mat-button-toggle-group>
+      <mat-button-toggle value="left" aria-label="Text aligns left" (click)="this.isTimerMode = true;  changeTimer(15);" >
+        Timer
+      </mat-button-toggle>
+      <mat-button-toggle value="right" aria-label="Text align center" (click)="this.isTimerMode = false; changeWordCount(25)">
+        Words
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+  &nbsp;
+  
+  <div fxLayout="row" fxLayoutAlign="space-around center" class="sample__body">
+    common words:
+    <div *ngFor="let size of uniqueWordsSample">
+      <div *ngIf="size !== this.uniqueWords; else highlight">
+        <button (click)="this.changeSampleAmount(size)">
+          {{size}}
+        </button>
+      </div>
+      <ng-template #highlight>
+        <div class="highlight">
+            {{this.uniqueWords}}
+        </div>
+      </ng-template>
+    </div>
+  </div>
+  
+  <div *ngIf="!this.isTimerMode" fxLayout="row" fxLayoutAlign="space-around center" class="sample__body">
+    words count:
+    <div *ngFor="let size of wordToTypeSample">
+      <div *ngIf="size !== this.wordToType; else highlight">
+        <button (click)="this.changeWordCount(size)">
+          {{size}}
+        </button>
+      </div>
+      <ng-template #highlight>
+        <div class="highlight">
+            {{this.wordToType}}
+        </div>
+      </ng-template>
+    </div>
+  </div>
+
+  <div *ngIf="this.isTimerMode" fxLayout="row" fxLayoutAlign="space-around center" class="sample__body">
+    time:
+    <div *ngFor="let timer of timerSample">
+      <div *ngIf="timer !== this.time; else highlight">
+        <button (click)="this.changeTimer(timer)">
+          {{timer}}
+        </button>
+      </div>
+      <ng-template #highlight>
+        <div class="highlight">
+            {{this.time}}
+        </div>
+      </ng-template>
+    </div>
+  </div>
+
+  <div *ngIf="isTimerMode">{{this.timeLeft}}</div>
+
+  <div fxLayout="row wrap" class="text__area">
+    <div fxLayout="row" *ngFor="let words of textSample; let i = index">
+      <div fxLayout="row" *ngFor="let letter of words; let j = index">
+        <ng-container *ngIf="  !this.userTextObj[i] || !this.userTextObj[i].word[j]; else userTextExists">
+         {{this.letter}} 
+        </ng-container>
+        <ng-template #userTextExists>
+          <ng-container *ngIf="this.userTextObj[i].status && this.userTextObj[i].status[j] === 'incorrect'; else incorrectLetter">
+            <div style="color:tomato !important;">
+              {{this.letter}}
+            </div>
+          </ng-container>
+          <ng-template #incorrectLetter>
+            <div style="color: lightgreen !important;">
+               {{this.letter}}
+            </div>
+          </ng-template>
+        </ng-template>
+      </div>
+      <div fxLayout="row" *ngIf="this.userTextObj[i]">
+        <div  *ngFor="let extraLetter of this.userTextObj[i].status; let letter = index">
+          <div *ngIf="extraLetter === 'extra'" style="color: #86595d;">
+            {{this.userTextObj[i].word[letter]}}
+          </div>
+        </div>
+      </div>
+      &nbsp;
+    </div>
+  </div>
+</div>
