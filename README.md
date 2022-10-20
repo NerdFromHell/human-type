@@ -1,6 +1,7 @@
 # HumanType
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.2.
+This project was inspired by "monkey type" and had a lot of fun making it.
 
 ## Development server
 
