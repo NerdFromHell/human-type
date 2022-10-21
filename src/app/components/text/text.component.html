@@ -64,7 +64,10 @@
     </div>
   </div>
 
-  <div *ngIf="isTimerMode">{{this.timeLeft}}</div>
+  <div *ngIf="isTimerMode" class="time_left">
+    Time left:&nbsp;
+    <p style="color: yellow !important;">{{this.timeLeft}}</p>
+  </div>
 
   <div fxLayout="row wrap" class="text__area">
     <div fxLayout="row" *ngFor="let words of textSample; let i = index">
