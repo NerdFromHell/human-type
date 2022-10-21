@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, NgZone, OnInit } from '@angular/core';
 import { common, userTextArrt } from '../../utils/consts';
 import { Router } from '@angular/router';
 import { TextService } from 'src/app/Services/text.service';
@@ -36,9 +36,9 @@ export class TextComponent implements OnInit {
   constructor(private route: Router, private textService: TextService) {}
 
   ngOnInit(): void {
+    
     this.generateTextSample();
     addEventListener('keydown', (event: KeyboardEvent) => {
-
       if(event.key !== 'Shift' && event.key !== 'Enter' && event.key !== 'Alt' && event.key !== 'Tab' && event.key !== 'Escape' && event.key !=='Meta') {
         if(this.isTimerMode && this.userTextObj.length === 0) {
           this.startTimer();
